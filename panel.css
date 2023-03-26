@@ -2,7 +2,7 @@ body {
 	color: var(--palette-gx_accent);
 	min-width: 225px;
 	background-color: var(--palette-gx_secondary_base);
-	font-family: sans-serif;
+	font-family: Alata;
 }
 
 #countdisplay {

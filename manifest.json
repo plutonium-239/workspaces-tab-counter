@@ -8,7 +8,7 @@
 		"name": "Pu239",
 		"url": "https://plutonium-239.github.io/"
 	},
-	"homepage_url": "https://plutonium-239.github.io/",
+	"homepage_url": "https://github.com/plutonium-239/workspaces-tab-counter",
 
 	"action": {
 		"default_icon": {
