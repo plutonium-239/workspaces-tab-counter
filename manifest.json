@@ -1,0 +1,47 @@
+{
+	"manifest_version": 3,
+
+	"name": "Workspace Tab Counter",
+	"description": "A tab counter specifically for GX, which counts tabs per workspace too.",
+	"version": "1.0",
+	"developer": {
+		"name": "Pu239",
+		"url": "https://plutonium-239.github.io/"
+	},
+	"homepage_url": "https://plutonium-239.github.io/",
+
+	"action": {
+		"default_icon": {
+			"16": "favicons/favicon-16.png",
+			"32": "favicons/favicon-32.png",
+			"48": "favicons/favicon-48.png",
+			"96": "favicons/favicon-96.png",
+			"128": "favicons/favicon-128.png"
+		},
+		"default_title": "Workspace Tab Counter",
+		"default_popup": "panel.html"
+	},
+	"sidebar_action": {
+		"default_icon": {
+			"16": "favicons/favicon-16.png",
+			"32": "favicons/favicon-32.png",
+			"48": "favicons/favicon-48.png",
+			"96": "favicons/favicon-96.png",
+			"128": "favicons/favicon-128.png"
+		},
+		"default_title": "Workspace Tab Counter",
+		"default_panel": "panel.html"
+	},
+	"permissions": [
+		"tabs",
+		// "storage",
+		"palette"
+	],
+	"icons": {
+		"16": "favicons/favicon-16.png",
+		"32": "favicons/favicon-32.png",
+		"48": "favicons/favicon-48.png",
+		"96": "favicons/favicon-96.png",
+		"128": "favicons/favicon-128.png"
+	}
+}
