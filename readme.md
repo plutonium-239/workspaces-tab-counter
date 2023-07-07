@@ -1,5 +1,7 @@
 # workspaces-tab-counter
 
+[Get this extension on the opera addons store](https://addons.opera.com/en/extensions/details/workspace-tab-counter/)
+
 This extension adds fine tab counting functionality to Opera GX. It also themes itself according to your GX theme :) (currently only dark)
 
 You can now see how many tabs there are per workspace in a simple table, both as a sidebar panel and an extension popup, wherever you prefer.
