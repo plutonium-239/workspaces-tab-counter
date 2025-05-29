@@ -34,7 +34,7 @@
 	},
 	"permissions": [
 		"tabs",
-		// "storage",
+		"storage",
 		"palette"
 	],
 	"icons": {

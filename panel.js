@@ -1,20 +1,32 @@
+import {get_flavour, Flavours} from "./opera_flavour_helper.js"
+
 var tbl = document.querySelector("#countdisplay");
 var sortedkeys;
 var totaltabs = 0;
 let counts = {};
 let wids = {};
 
+// ! opr.workspacesPrivate is NEVER available, inside show(), yet somehow available inside update_badge
+
+// let global_start = performance.now()
+
 function show() {
+	// let t0 = performance.now()
+	// console.log(`show.start (from global) took ${t0 - global_start} ms.`);
 	setColor();
+	// let t1 = performance.now()
+	// console.log(`setColor took ${t1 - t0} ms.`);
 
 	if (typeof opr.workspacesPrivate !== "undefined") {
 		opr.workspacesPrivate.getWorkspacesInfo(
-			workspaces => update_dicts_operaone(workspaces)
+			workspaces => update_dicts_oprpvt(workspaces)
 		).then(make_table);
+		console.log("Working with opr.workspacesPrivate")
 	} else {
 		chrome.tabs.query({
 			currentWindow: true
 		}).then(tabs => update_dicts(tabs)).then(make_table);
+		console.log("Working with chrome.tabs")
 	}
 	// sortedkeys = chrome.storage.local.get(["sortedkeys"]).then((result) => {
 	// 	console.log("Value currently is " + result.key);
@@ -32,7 +44,7 @@ function update_dicts(tabs) {
 	});
 }
 
-function update_dicts_operaone(workspaces) {
+function update_dicts_oprpvt(workspaces) {
 	counts = {};
 	wids = {};
 	totaltabs = 0;
@@ -58,7 +70,7 @@ function update_badge() {
 
 function update_badge_operaone() {
 	opr.workspacesPrivate.getWorkspacesInfo(
-		workspaces => update_dicts_operaone(workspaces)
+		workspaces => update_dicts_oprpvt(workspaces)
 	);
 
 	opr.workspacesPrivate.getWorkspacesInfo(workspaces => {
@@ -74,30 +86,58 @@ function update_badge_operaone() {
 
 document.addEventListener("DOMContentLoaded", show, false);
 
-
 if (typeof opr.workspacesPrivate !== "undefined") {
 	opr.workspacesPrivate.onActiveWorkspaceChanged(update_badge_operaone)
+	console.log("Listening for badge with opr.workspacesPrivate")
 } else {
 	chrome.tabs.onActivated.addListener(update_badge)
+	console.log("Listening for badge with chrome.tabs")
 }
 
-function setColor() {
+async function setColor() {
+	var colors_dict;
+	// let t0 = performance.now()
+	let flavour = await get_flavour();
+	if (flavour === Flavours.GX) {
+		// # Opera GX
+		colors_dict = [
+			['fg', 'gx_accent'],
+			['bg', 'gx_secondary_base']
+		]
+	} else if (flavour === Flavours.One) {
+		// # Opera one/air
+		colors_dict = [
+			['fg', 'accent_dark'],
+			['bg', 'background_dark']
+		]
+	} else if (flavour === Flavours.Air) {
+		// opera air does not have any accent color, add a green-ish color matching the browser
+		// however it has a transparent background
+		colors_dict = [
+			['fg', 'archipelago_avocado'],
+		]
+		document.documentElement.style.setProperty(`--bg`, '#0005');
+	}
+	// let t1 = performance.now()
+	// console.log(`waiting for get_flavour took ${t1 - t0} ms.`);
 
-	opr.palette.getPalette(palette => {
-		for (const paletteColor of palette) {
-			opr.palette.getColor(paletteColor, color => {
-				document.documentElement.style.setProperty(`--palette-${paletteColor}`, `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`);
-			});
-		}
-	});
+	console.log("Inside setColor", colors_dict)
+	for (const [varName, paletteColor] of colors_dict) {
+		opr.palette.getColor(paletteColor, color => {
+			// console.log([varName, paletteColor, color])
+			document.documentElement.style.setProperty(`--${varName}`, `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`);
+			// document.documentElement.style.setProperty(`--${varName}`, `hsl(${color.h},${color.s},${color.l})`);
+		});
+	}
 
 	// need to resort to this as waiting for async fn as callback inside async fn is not very fun. python ftw <3
 	setTimeout(() => {
-		console.log(document.documentElement.style.getPropertyValue('--palette-gx_secondary_base'))
-		console.log(document.documentElement.style.getPropertyValue('--palette-gx_accent'))
-		chrome.action.setBadgeBackgroundColor({color: document.documentElement.style.getPropertyValue('--palette-gx_secondary_base')});
-		chrome.action.setBadgeTextColor({color: document.documentElement.style.getPropertyValue('--palette-gx_accent')});
-	}, 100)
+		let fg = document.documentElement.style.getPropertyValue('--fg')
+		let bg = document.documentElement.style.getPropertyValue('--bg')
+		console.log('Using colors in badge:', {fg, bg})
+		chrome.action.setBadgeBackgroundColor({color: bg});
+		chrome.action.setBadgeTextColor({color: fg});
+	}, 50)
 }
 
 function toHex(number) {

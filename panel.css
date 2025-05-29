@@ -1,7 +1,12 @@
+:root {
+	--fg: #ff0077;
+	--bg: #4b009f;
+}
+
 body {
-	color: var(--palette-gx_accent);
+	color: var(--fg);
 	min-width: 225px;
-	background-color: var(--palette-gx_secondary_base);
+	background-color: var(--bg);
 	font-family: 'Space Mono', monospace;
 }
 
@@ -11,25 +16,13 @@ body {
 	border-collapse: collapse;
 }
 
-tr {
-/*	border-bottom: 3px dashed var(--palette-gx_no_40);*/
-	border-top: 3px dashed var(--palette-gx_no_40);
-}
-
 thead > tr, .final-row {
 /*	border-left: 3px dashed var(--palette-gx_no_40);*/
 	font-weight: bold;
-	background-color: var(--palette-gx_no_32);
-	border-bottom: 3px dashed var(--palette-gx_accent);
-	border-top: 3px dashed var(--palette-gx_accent);
+	background-color: hsl(from var(--bg) h s 32);
+	border-bottom: 3px dashed var(--fg);
+	border-top: 3px dashed var(--fg);
 }
-
-/*thead, .final-row > td {
-}*/
-/*
-table td + td {
-	border-left: 3px dashed var(--palette-gx_no_59);
-}*/
 
 a {
 	color: #f07;
