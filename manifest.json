@@ -3,7 +3,7 @@
 
 	"name": "Workspace Tab Counter",
 	"description": "A tab counter specifically for GX, which counts tabs per workspace too.",
-	"version": "1.0",
+	"version": "1.2",
 	"developer": {
 		"name": "Pu239",
 		"url": "https://plutonium-239.github.io/"
