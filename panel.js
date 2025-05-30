@@ -64,6 +64,7 @@ function update_badge() {
 	chrome.tabs.query({currentWindow: true, active: true}, function(tabs) {
 		curr_work_tabs = counts[tabs[0].workspaceName];
 		chrome.action.setBadgeText({text: curr_work_tabs.toString()});
+		opr.sidebarAction.setBadgeText({text: curr_work_tabs.toString()});
 	});
 	// console.log("CALLED" + curr_work_tabs);
 }
@@ -137,6 +138,8 @@ async function setColor() {
 		console.log('Using colors in badge:', {fg, bg})
 		chrome.action.setBadgeBackgroundColor({color: bg});
 		chrome.action.setBadgeTextColor({color: fg});
+		opr.sidebarAction.setBadgeBackgroundColor({color: bg});
+		opr.sidebarAction.setBadgeTextColor({color: fg});
 	}, 50)
 }
 
