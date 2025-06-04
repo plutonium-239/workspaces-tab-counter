@@ -2,8 +2,8 @@
 	"manifest_version": 3,
 
 	"name": "Workspace Tab Counter",
-	"description": "A tab counter specifically for GX, which counts tabs per workspace too.",
-	"version": "1.2",
+	"description": "A tab counter made for all Opera browsers, which counts tabs per workspace too.",
+	"version": "2.0",
 	"developer": {
 		"name": "Pu239",
 		"url": "https://plutonium-239.github.io/"
@@ -31,6 +31,10 @@
 		},
 		"default_title": "Workspace Tab Counter",
 		"default_panel": "panel.html"
+	},
+	"background": {
+		"service_worker": "service-worker.js",
+		"type": "module"
 	},
 	"permissions": [
 		"tabs",
