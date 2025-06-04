@@ -42,6 +42,10 @@ async function update_badge() {
 	chrome.action.setBadgeText({text: curr_work_tabs.toString()});
 	opr.sidebarAction.setBadgeText({text: curr_work_tabs.toString()});
 
+	await sendUpdateMsg()
+}
+
+async function sendUpdateMsg() {
 	try {
 		await chrome.runtime.sendMessage({});
 	} catch {
@@ -55,4 +59,7 @@ chrome.action.onClicked.addListener(() => update_badge())
 chrome.tabs.onCreated.addListener((tab) => update_badge())
 chrome.tabs.onRemoved.addListener((tabId, removeInfo) => update_badge())
 
-opr.palette.onPaletteChanged.addListener(setColor)
+opr.palette.onPaletteChanged.addListener(async () => {
+	await setColor()
+	await sendUpdateMsg()
+})

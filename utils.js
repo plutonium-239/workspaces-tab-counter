@@ -42,12 +42,21 @@ export async function setColor() {
 
 	// console.log("Inside setColor", colors_dict)
 	for (const [varName, paletteColor] of colors_dict) {
-		opr.palette.getColor(paletteColor, color => {
-			// console.log([varName, paletteColor, color])
-			colors[varName] = `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`
-		});
+		await new Promise((resolve) => {
+			opr.palette.getColor(paletteColor, color => {
+				// console.log([varName, paletteColor, color])
+				// let l = (Math.max(color.r, color.g, color.b) + Math.min(color.r, color.g, color.b))/(2*255);
+				// if (varName === "bg" && l > 0.3) {
+				// 	colors[varName] = `hsl(from())`;
+				// } else{
+				// }
+				colors[varName] = `#${toHex(color.r)}${toHex(color.g)}${toHex(color.b)}`;
+				resolve();
+			});
+		})
 	}
-	console.log("Setting colors to", colors)
+	// console.log("Setting colors to", colors)
+	console.log(`Setting badge colors to ${colors.fg}, ${colors.bg}`)
 	await set('colors', colors)
 	chrome.action.setBadgeBackgroundColor({color: colors.bg});
 	chrome.action.setBadgeTextColor({color: colors.fg});

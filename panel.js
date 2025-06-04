@@ -1,9 +1,13 @@
 import { get, getMany } from "./idb-keyval.js";
 import {update_dicts} from "./utils.js"
 
+async function show() {
+	await setColor();
+	make_table();
+}
 
-document.addEventListener("DOMContentLoaded", () => {setColor();make_table();}, false);
-chrome.runtime.onMessage.addListener(make_table)
+document.addEventListener("DOMContentLoaded", show, false);
+chrome.runtime.onMessage.addListener(show)
 
 async function setColor() {
 	let colors = await get('colors')

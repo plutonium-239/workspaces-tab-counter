@@ -1,12 +1,13 @@
 :root {
 	--fg: #ff0077;
 	--bg: #4b009f;
+	--link: #f07;
 }
 
 body {
 	color: var(--fg);
 	min-width: 225px;
-	background-color: var(--bg);
+	background-color: hsl(from var(--bg) h s min(l, 24));
 	font-family: 'Space Mono', monospace;
 }
 
@@ -29,7 +30,7 @@ thead > tr, .final-row {
 }
 
 a {
-	color: #f07;
+	color: var(--link);
 /*	background-color: #deadff;*/
 }
 
