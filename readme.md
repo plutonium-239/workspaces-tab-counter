@@ -30,7 +30,8 @@ This extension adds fine-grained tab counting functionality to ~~Opera GX~~ ==al
 You can now see how many tabs there are per workspace in a simple table, both as a sidebar panel and an extension popup, wherever you prefer.
 
 > [!NOTE]
-> New in version 2.0
+> ### New in version 2.0:
+>
 > Added a badge on the extension icon on both the popup icon and the sidebar icon displaying the number of tabs in the current workspace. Ofc the badge is also themed according to your browser.
 >
 > Also, the extension now uses a service worker architecture, which means everything keeps updating **LIVE**! This includes literally everything you can see:
@@ -47,6 +48,8 @@ You can now see how many tabs there are per workspace in a simple table, both as
 
 ***Yes I do have 643 tabs open deal with it.***\
 *Update: \~1050 tabs were lost during the gx old ui -> new ui change \:')* *nooooooo~oooo~ nooooooooo la polizia\~*
+
+## Themes
 
 ![themes](demoimages/themespreview.png)
 
