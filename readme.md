@@ -38,6 +38,7 @@ You can now see how many tabs there are per workspace in a simple table, both as
 > - Icon Badge (address bar + sidebar)
 > - Popup/ Sidebar Panel
 
+https://github.com/user-attachments/assets/e8324d1c-e732-4137-9f21-4950343e32d7
 
 ## Different places in which the count is displayed
 
