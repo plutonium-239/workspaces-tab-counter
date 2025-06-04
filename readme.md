@@ -2,22 +2,50 @@
 
 [Get this extension on the opera addons store](https://addons.opera.com/en/extensions/details/workspace-tab-counter/)
 
-This extension adds fine tab counting functionality to Opera GX. It also themes itself according to your GX theme :) (currently only dark)
+> [!IMPORTANT]
+> <details>
+> <summary>
+> If you are using Force Dark Pages, the (border) colors will look a little off. 
+> </summary>
+> I couldn't find a way to tell GX that the website is already dark. So please add: 
+> 
+> (if installed from opera addons store)
+> ```url
+> chrome-extension://jmkkamllgfbbdmpcjahoodclfgehnpla/panel.html
+> ```
+> 
+> (if installed locally)
+> ```url
+> chrome-extension://lofcdnammfkmkpgphppmojhbpkkcbona/panel.html
+> ``` 
+>
+>  to your "Disable" list on [opera://settings/content/forceDarkMode](opera://settings/content/forceDarkMode)
+> </details>
+
+This extension adds fine-grained tab counting functionality to ~~Opera GX~~ ==all Opera browsers== (GX, One, Air). It also themes itself according to your browser theme :)
 
 You can now see how many tabs there are per workspace in a simple table, both as a sidebar panel and an extension popup, wherever you prefer.
 
-![sidebar pinned](pinned.png)
+> [!NOTE]
+> New in version 2.0
 
-![popup](popup.png)
+Added a badge on the extension icon on both the popup icon and the sidebar icon displaying the number of tabs in the current workspace. Ofc the badge is also themed according to your browser.
+
+Also, the extension now uses a service worker architecture, which means everything keeps updating **LIVE**! This includes literally everything you can see:
+- Icon Badge (address bar + sidebar)
+- Popup/ Sidebar Panel
+
+![display](demoimages/demo.png | width=500)
+
+## Different places in which the count is displayed
+
+![sidebar pinned](demoimages/sidebar.png) | ![popup](demoimages/popup-with-badge.png) | ![sidebar-badge](demoimages/sidebar-badge.png) | ![popup-badge](demoimages/popup-badge.png) |
+| -----  | ---- | - | - |
+| Sidebar  | Popup | Sidebar Badge | Popup Badge |
+
 
 ***Yes I do have 643 tabs open deal with it.***
 
-![themes](themespreview.png)
+![themes](demoimages/themespreview.png)
 
 
-
-Update: Working on adding the current workspace's tab count to the badge, as below:
-
-![image-20230327014655710](https://i.ibb.co/0GPct6N/image-20230327014655710.png)
-
-It does work but sometimes it takes a lot of time to update in the same conditions, so it's not part of the extension yet.

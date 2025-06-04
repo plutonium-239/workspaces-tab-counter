@@ -16,6 +16,10 @@ body {
 	border-collapse: collapse;
 }
 
+tr {
+	border-top: 3px dashed hsl(from var(--bg) h s 40);
+}
+
 thead > tr, .final-row {
 /*	border-left: 3px dashed var(--palette-gx_no_40);*/
 	font-weight: bold;
