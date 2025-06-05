@@ -2,6 +2,8 @@
 
 [Get this extension on the opera addons store](https://addons.opera.com/en/extensions/details/workspace-tab-counter/)
 
+[![opera addons store](https://img.shields.io/badge/Addons_Store-gray?style=for-the-badge&logo=opera&logoColor=white&label=Opera&labelColor=FF1B2D)](https://addons.opera.com/en/extensions/details/workspace-tab-counter/)
+
 ![display](demoimages/demo.png)
 
 > [!IMPORTANT]
